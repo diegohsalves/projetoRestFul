@@ -12,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
 @Table(name = "tb_user")
 public class User implements Serializable {
 
@@ -27,6 +28,9 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 	
+	//Lazy Loading - Qd OneToMany, o JPA nao chamara o Many para evitar overloading, porem qd chamar ManyToOne, ele chamara o One
+	//Evita um loop por conta da associacao de mao dupla (user e order)
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 	
