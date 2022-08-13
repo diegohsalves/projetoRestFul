@@ -25,8 +25,8 @@ public class UserService {
 
 	public User findById(Long id) {
 		Optional<User> obj = userRepository.findById(id);
-		return obj.orElseThrow(() -> new ResourceNotFoundException(id)); // orElseThrow lancará a exceção determinada
-																			// caso a função não execute como esperado.
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id)); // orElseThrow lancará a exceção determinada caso a função não execute como esperado.
+																			 
 	}
 
 	public User insert(User obj) {
